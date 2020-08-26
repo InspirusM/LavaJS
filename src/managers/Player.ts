@@ -142,6 +142,17 @@ export class Player {
         if (err) throw new Error(err);
       });
   }
+  
+  public setFilter(op: String, body = {}): this {
+        this.node.send({
+            op: op,
+            guildId: this.options.guild.id,
+            ...body,
+        })
+
+        return this;
+    }
+
 
   /**
    * Change the player voice channel
